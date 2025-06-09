@@ -20,15 +20,25 @@
         const days1 = daysBetween(date1_start, date1_end);
 
         const date2_start = new Date("2025-05-23");
-        const date2_end = new Date();
-        const days2 = daysBetween(date2_start, date2_end);
+        const date2_end = new Date();  // current UTC-based time
 
+        // Convert to Beijing time (UTC+8)
+        const beijingTime = new Date(date2_end.getTime() + (8 * 60 * 60 * 1000));
+
+        // Format Beijing date as YYYY-MM-DD
+        const todayString = `${beijingTime.getUTCFullYear()}-${(beijingTime.getUTCMonth() + 1).toString().padStart(2, '0')}-${beijingTime.getUTCDate().toString().padStart(2, '0')}`;
+
+        // Calculate days between dates (still needs your daysBetween() function)
+        const days2 = daysBetween(date2_start, date2_end); // Keep the end date in UTC (it's fine for the day count)
+
+        // Sum
         const sumDays = days1 + days2;
 
-        // Display the results
-        document.getElementById("line1").textContent = `Days between 2021.9.18 and 2023.11.23: ${days1}`;
-        document.getElementById("line2").textContent = `Days between 2025.5.23 and today: ${days2}`;
-        document.getElementById("line3").textContent = `Sum of the two lines: ${sumDays}`;
+        // Display
+        document.getElementById("line1").textContent = `Days between 2021-9-18 and 2023-11-23: ${days1}`;
+        document.getElementById("line2").textContent = `Days between 2025-5-23 and ${todayString}: ${days2}`;
+        document.getElementById("line3").textContent = `Total days: ${sumDays}`;
+
     </script>
 </body>
 </html>
