@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Days Calculation</title>
+</head>
+<body>
+    <h3>Days Calculation</h3>
+    <p id="line1"></p>
+    <p id="line2"></p>
+    <p id="line3"></p>
+
+    <script>
+        function daysBetween(date1, date2) {
+            const msPerDay = 24 * 60 * 60 * 1000;
+            const diffTime = Math.abs(date2 - date1);
+            return Math.floor(diffTime / msPerDay);
+        }
+
+        const date1_start = new Date("2021-09-18");
+        const date1_end = new Date("2023-11-23");
+        const days1 = daysBetween(date1_start, date1_end);
+
+        const date2_start = new Date("2025-05-23");
+        const date2_end = new Date();
+        const days2 = daysBetween(date2_start, date2_end);
+
+        const sumDays = days1 + days2;
+
+        // Display the results
+        document.getElementById("line1").textContent = `Days between 2021.9.18 and 2023.11.23: ${days1}`;
+        document.getElementById("line2").textContent = `Days between 2023.5.23 and today: ${days2}`;
+        document.getElementById("line3").textContent = `Sum of the two lines: ${sumDays}`;
+    </script>
+</body>
+</html>
