@@ -9,7 +9,7 @@
     <p id="line3"></p>
 
     <!-- New section for user input -->
-    <label for="daysInput">Enter total days (e.g., 1000): </label>
+    <label for="daysInput">Enter target days (e.g., 1000): </label>
     <input type="number" id="daysInput" />
     <button onclick="calculateTargetDate()">Calculate Date</button>
     <p id="result"></p>
@@ -34,12 +34,12 @@
             if (remainingDays <= days1) {
                 // Falls in first range
                 const targetDate = new Date(date1_start.getTime() + remainingDays * 24 * 60 * 60 * 1000);
-                document.getElementById("result").textContent = `The ${inputDays}th day falls in the first date range, on ${targetDate.toISOString().split('T')[0]}.`;
+                document.getElementById("result").textContent = `The ${inputDays}th day is on ${targetDate.toISOString().split('T')[0]}.`;
             } else {
                 // Falls in second range
                 remainingDays -= days1;
                 const targetDate = new Date(date2_start.getTime() + remainingDays * 24 * 60 * 60 * 1000);
-                document.getElementById("result").textContent = `The ${inputDays}th day falls in the second date range, on ${targetDate.toISOString().split('T')[0]}.`;
+                document.getElementById("result").textContent = `The ${inputDays}th day is on ${targetDate.toISOString().split('T')[0]}.`;
             }
         }
 
